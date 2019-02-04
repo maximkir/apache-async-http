@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+ext.libraryVersions = [
+        slf4j           : '1.7.25',
+        httpcomponents  : '4.5.6',
+        httpasyncclient : '4.1.4',
+        wiremock        : '2.20.0',
+        junit           : '4.12',
+        assertj         : '3.11.1'
+]
+
+dependencies {
+    testImplementation group: 'org.apache.httpcomponents', name: 'httpmime',           version: "${libraryVersions.httpcomponents}"
+    testImplementation group: 'org.apache.httpcomponents', name: 'httpasyncclient',    version: "${libraryVersions.httpasyncclient}"
+    testImplementation group: 'org.slf4j',                 name: 'slf4j-api',          version: "${libraryVersions.slf4j}"
+    testImplementation group: 'junit',                     name: 'junit',              version: "${libraryVersions.junit}"
+    testImplementation group: 'org.assertj',               name: 'assertj-core',       version: "${libraryVersions.assertj}"
+    testImplementation group: 'com.github.tomakehurst',    name: 'wiremock',           version: "${libraryVersions.wiremock}"
+    testRuntime group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
+    testRuntime group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+}
+
